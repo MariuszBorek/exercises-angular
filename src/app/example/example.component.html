@@ -1,0 +1,115 @@
+<!-- ---------------------service---------------------- -->
+<div>
+    <br>
+    <h2>Service:</h2>
+    <ul>
+        <li *ngFor="let example of examples">
+            <div>ID: {{ example.id }}, full name: {{ example.firstName | uppercase }} {{ example.lastName | uppercase }}, job: {{ example.job }}</div>
+        </li>
+    </ul>
+</div>
+
+<!-- --------------------{{ product }}----------------------- -->
+<div>
+    <br>
+    <h2>curly brackets and pipe:</h2>
+    <p>product: {{ product | uppercase }}</p>
+    <p>length of the word: {{ product.length }}</p>
+    <p>display person as json: {{ person | json }}</p>
+</div>
+
+<!-- --------------------[value]="email"----------------------- -->
+<div>
+    <br>
+    <h2>[value]="sampleEmail":</h2>
+    <input [value]="sampleEmail">
+</div>
+
+<!-- --------------------(click)="showSomethig()"----------------------- -->
+<div>
+    <br>
+    <h2>(click)="showSomthing()":</h2>
+    <input [value]="textInTextField">
+    <button (click)="showSomthing()">{{ textInTextField }}</button>
+</div>
+
+<!-- --------------------(click)="logMessage(myInput.value)"----------------------- -->
+
+<div>
+    <br>
+    <h2>(click)="logMessage(myInput.value)":</h2>
+    <p>{{ textToDisplay }}</p>
+    <input #myInput>
+    <button (click)="logMessage(myInput.value)">Log</button>
+</div>
+
+
+<!-- --------------------[(ngModel)]----------------------- -->
+<div>
+    <br>
+    <h2>ngModule:</h2>
+    <div>
+        <p>{{ email }}</p>
+    </div>
+    <div>
+        <input [(ngModel)]="email" (keyup.enter)="onKeyUp()">
+    </div>
+
+</div>
+
+<!-- ---------------------*ngFor---------------------- first as f || last as l -->
+<div>
+    <br>
+    <h2>*ngFor:</h2>
+    <ul>
+        <li *ngFor="let name of names; index as i">
+            <button>{{ i }} {{ name }}</button>
+        </li>
+    </ul>
+</div>
+
+<!-- ---------------------*ngIf---------------------- -->
+<!-- I way -->
+<div>
+    <br>
+    <h2>*ngIf:</h2>
+    <div *ngIf="isRighttButon; then rightBlock; else leftBlock"></div>
+
+    <ng-template #leftBlock>
+        <p>left button</p>
+    </ng-template>
+
+    <ng-template #rightBlock>
+        <p>right button</p>
+    </ng-template>
+
+    <button (click)="displayLeftButton()">left button</button>
+    <button (click)="displayRightButton()">right button</button>
+</div>
+
+<!-- II way -->
+<!-- <div>
+    <br>
+    <h2>*ngIf:</h2>
+    <div *ngIf="isRighttButon; else elseBlock">
+        <p>right button</p>
+    </div>
+    <ng-template #elseBlock>
+        <div>
+            <p>left button</p>
+        </div>
+    </ng-template>
+
+    <button (click)="displayLeftButton()">left button</button>
+    <button (click)="displayRightButton()">right button</button>
+</div> -->
+
+<!-- ---------------------*ngSwitch---------------------- -->
+<div>
+    <div [ngSwitch]="color">
+        <div *ngSwitchCase="'red'">You picked red color</div>
+        <div *ngSwitchCase="'blue'">You picked blue color</div>
+        <div *ngSwitchCase="'green'">You picked green color</div>
+        <div *ngSwitchDefault>pick again</div>
+    </div>
+</div>
